@@ -18,13 +18,11 @@ int main() {
         i++;
     }
     
-    printf("\n");
+    printf("Movimento da Torre:\n");
 
     for (int j = 0; j < CASAS_TORRE; j++) {
         printf("Direita\n");
     }
-
-    printf("\n");
 
     printf("Movimento da Rainha:\n");
     int k = 0;
