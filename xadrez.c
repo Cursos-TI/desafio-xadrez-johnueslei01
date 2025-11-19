@@ -6,103 +6,62 @@
 
 #include <stdio.h>
 
-// definicao de constantes
-#define MOVIMENTOS_TORRE 5
-#define MOVIMENTOS_BISPO 5
-#define MOVIMENTOS_RAINHA 8
-#define CAVALO_PULOS_CIMA 2
-#define CAVALO_PULOS_DIREITA 1
-
-// definição recursividade
-void moverTorreRecursivo(int casasRestantes);
-void moverRainhaRecursivo(int casasRestantes);
-void moverBispoRecursivo(int casasRestantes);
-
 int main() {
-    // movimento da torre
-    printf("Movimento da Torre\n");
-    moverTorreRecursivo(MOVIMENTOS_TORRE);
+
+    const int CASAS_BISPO = 5;
+    const int CASAS_TORRE = 5;
+    const int CASAS_RAINHA = 8;
+    
+    // constantes para o cavalo
+    const int CASAS_CAVALO_BAIXO = 2;
+    const int CASAS_CAVALO_ESQUERDA = 1;
+
+    
+    // bispo
+    printf("Movimento do Bispo:\n");
+    int i = 0;
+    while (i < CASAS_BISPO) {
+        printf("Cima, Direita\n");
+        i++;
+    }
+    
     printf("\n");
 
-    // movimento da raina
-    printf("Movimento da Rainha\n");
-    moverRainhaRecursivo(MOVIMENTOS_RAINHA);
-    printf("\n");
+    // torre
+    printf("Movimento da Torre:\n");
+    for (int j = 0; j < CASAS_TORRE; j++) {
+        printf("Direita\n");
+    }
 
-    // movimento do bispo
-    // as direções vertical e horizontal dentro de cada passo
-    printf("Movimento do Bispo\n");
-    moverBispoRecursivo(MOVIMENTOS_BISPO);
-    printf("\n");
+    printf("\n"); // Separador
 
-    // movimento do cavalo
-    // movimento em L
-    printf("Movimento do Cavalo\n");
+    // rainha
+    printf("Movimento da Rainha:\n");
+    int k = 0;
+    do {
+        printf("Esquerda\n");
+        k++;
+    } while (k < CASAS_RAINHA);
+    
+    printf("\n"); // Separador
 
-    // loop externo
-    // usei varias variaveis no for (i, j) pra demonstrar controle complexo
-    for (int i = 0, j = 0; i < CAVALO_PULOS_CIMA; i++) {
+    // cavalo
+    
+    printf("Movimento do Cavalo:\n");
+
+    for (int c = 0; c < CASAS_CAVALO_BAIXO; c++) {
         
-        // imprime o movimento vertical
-        printf("Cima\n");
+        printf("Baixo\n");
 
-        // o cavalo so vira pra direita depois de completar os movimentos verticais.
-        if (i == (CAVALO_PULOS_CIMA - 1)) {
+        if (c == (CASAS_CAVALO_BAIXO - 1)) {
             
-            // controle do movimento horizontal
-            while (j < CAVALO_PULOS_DIREITA) {
-                printf("Direita\n");
-                j++;
-                if (j >= CAVALO_PULOS_DIREITA) {
-                    break; 
-                }
+            int d = 0;
+            while (d < CASAS_CAVALO_ESQUERDA) {
+                printf("Esquerda\n");
+                d++;
             }
-        } else {
-            continue;
         }
     }
 
     return 0;
-}
-
-// recursividade da torre
-
-void moverTorreRecursivo(int casasRestantes) {
-    // se não há mais casas encerra a recursicidade
-    if (casasRestantes <= 0) {
-        return; 
-    }
-    
-    printf("Direita\n");
-    
-    // chama a função novamente com (n - 1)
-    moverTorreRecursivo(casasRestantes - 1);
-}
-
-// recursividade da rainha
-
-void moverRainhaRecursivo(int casasRestantes) {
-    if (casasRestantes <= 0) return;
-    
-    printf("Esquerda\n");
-    moverRainhaRecursivo(casasRestantes - 1);
-}
-
-// recursividade da torre
-
-void moverBispoRecursivo(int casasRestantes) {
-    if (casasRestantes <= 0) return;
-
-    // simulando movimento diagonal usando loops aninhados conforme solicitado
-    for(int v = 0; v < 1; v++) {
-        printf("Cima\n");
-        
-        // Loop Interno: Horizontal
-        for(int h = 0; h < 1; h++) {
-            printf("Direita\n");
-        }
-    }
-    
-    // passo recursivo para a próxima casa na diagonal
-    moverBispoRecursivo(casasRestantes - 1);
 }
